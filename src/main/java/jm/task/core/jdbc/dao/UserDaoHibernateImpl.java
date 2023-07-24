@@ -1,8 +1,8 @@
 package jm.task.core.jdbc.dao;
 
 import java.util.ArrayList;
-import jm.task.core.jdbc.model.User;
 import java.util.List;
+import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -22,7 +22,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
         try(Session session = util.getConnectionHibernate()) {
             Transaction transaction = session.beginTransaction();
-            session.createNativeQuery(sqlRequest).executeUpdate();
+            session.createNativeQuery(sqlRequest, User.class).executeUpdate();
             transaction.commit();
         } catch (TransactionException e) {
             e.printStackTrace();
@@ -35,7 +35,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
         try(Session session = util.getConnectionHibernate()) {
             Transaction transaction = session.beginTransaction();
-            session.createNativeQuery(sqlRequest).executeUpdate();
+            session.createNativeQuery(sqlRequest, User.class).executeUpdate();
             transaction.commit();
         } catch (TransactionException e) {
             e.printStackTrace();
@@ -91,7 +91,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
         try(Session session = util.getConnectionHibernate()) {
             Transaction transaction = session.beginTransaction();
-            session.createNativeQuery(hqlRequest).executeUpdate();
+            session.createNativeQuery(hqlRequest, User.class).executeUpdate();
             transaction.commit();
         } catch (TransactionException e) {
             e.printStackTrace();
